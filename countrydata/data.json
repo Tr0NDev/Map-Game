@@ -1,0 +1,860 @@
+{
+	"France": {
+		"population": {
+			"pop_number": 68000000,
+			"approval": 72
+		},
+		"army": {
+			"soldier": 203000,
+			"tank": 222,
+			"armored_vehicle": 6000,
+			"aircraft": 254,
+			"destroyer": 11,
+			"submarine": 10,
+			"aicraft_carrier": 1,
+			"cyber_power": 750
+		},
+		"resources": {
+			"oil": 1200,
+			"metal": 8000,
+			"coal": 3000,
+			"gas": 800,
+			"uranium": 6000,
+			"food": 75000,
+			"energy": 45000,
+			"wood": 17000,
+			"gold": 2436,
+			"rare_earth": 120,
+			"digital": 8500
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 2800000000000,
+			"avg_salary": 2600,
+			"tax_rate": 47,
+			"military_budget": 4,
+			"infrastructure_budget": 8,
+			"social_bugdet": 31
+		},
+		"infrastructure": {
+			"factory": 42000,
+			"railways": 28000,
+			"ports": 66,
+			"airports": 475
+		},
+		"terrain": {
+			"oil": 1200,
+			"view_oil": 800,
+			"metal": 8000,
+			"view_metal": 6000,
+			"coal": 3000,
+			"view_coal": 2500,
+			"gas": 800,
+			"view_gas": 500,
+			"uranium": 6000,
+			"view_uranium": 5500,
+			"food": 75000,
+			"view_food": 70000,
+			"energy": 45000,
+			"view_energy": 40000,
+			"wood": 17000,
+			"view_wood": 15000,
+			"gold": 2436,
+			"view_gold": 1800,
+			"rare_earth": 120,
+			"view_rare_earth": 40
+		}
+	},
+	"Italy": {
+		"population": {
+			"pop_number": 59000000,
+			"approval": 95
+		},
+		"army": {
+			"soldier": 8500,
+			"tank": 90,
+			"armored_vehicle": 200,
+			"aircraft": 18,
+			"destroyer": 4,
+			"submarine": 4,
+			"aicraft_carrier": 2,
+			"cyber_power": 85
+		},
+		"resources": {
+			"oil": 2000,
+			"metal": 2500,
+			"coal": 1000,
+			"gas": 1200,
+			"uranium": 50,
+			"food": 9000,
+			"energy": 8500,
+			"wood": 1800,
+			"gold": 200,
+			"rare_earth": 80,
+			"digital": 95
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 35000000000,
+			"avg_salary": 1800,
+			"tax_rate": 28,
+			"military_budget": 20,
+			"infrastructure_budget": 30,
+			"social_bugdet": 30
+		},
+		"infrastructure": {
+			"factory": 350000,
+			"railways": 24000,
+			"ports": 30,
+			"airports": 110
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"Germany": {
+		"population": {
+			"pop_number": 83000000,
+			"approval": 98
+		},
+		"army": {
+			"soldier": 12000,
+			"tank": 150,
+			"armored_vehicle": 300,
+			"aircraft": 25,
+			"destroyer": 6,
+			"submarine": 4,
+			"aircraft_carrier": 1,
+			"cyber_power": 110
+		},
+		"resources": {
+			"oil": 4000,
+			"metal": 3500,
+			"coal": 2500,
+			"gas": 2000,
+			"uranium": 150,
+			"food": 7500,
+			"energy": 12000,
+			"wood": 3000,
+			"gold": 500,
+			"rare_earth": 200,
+			"digital": 110
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 60000000000,
+			"avg_salary": 2200,
+			"tax_rate": 27,
+			"military_budget": 27,
+			"infrastructure_budget": 28,
+			"social_budget": 25
+		},
+		"infrastructure": {
+			"factory": 600000,
+			"railways": 35000,
+			"ports": 28,
+			"airports": 160
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"Spain": {
+		"population": {
+			"pop_number": 47000000,
+			"approval": 92
+		},
+		"army": {
+			"soldier": 7000,
+			"tank": 80,
+			"armored_vehicle": 180,
+			"aircraft": 15,
+			"destroyer": 3,
+			"submarine": 2,
+			"aircraft_carrier": 1,
+			"cyber_power": 80
+		},
+		"resources": {
+			"oil": 1500,
+			"metal": 2000,
+			"coal": 1200,
+			"gas": 1000,
+			"uranium": 40,
+			"food": 7000,
+			"energy": 6000,
+			"wood": 1600,
+			"gold": 150,
+			"rare_earth": 70,
+			"digital": 75
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 25000000000,
+			"avg_salary": 1700,
+			"tax_rate": 26,
+			"military_budget": 18,
+			"infrastructure_budget": 28,
+			"social_budget": 28
+		},
+		"infrastructure": {
+			"factory": 300000,
+			"railways": 20000,
+			"ports": 20,
+			"airports": 100
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"United Kingdom": {
+		"population": {
+			"pop_number": 67000000,
+			"approval": 100
+		},
+		"army": {
+			"soldier": 9000,
+			"tank": 80,
+			"armored_vehicle": 200,
+			"aircraft": 18,
+			"destroyer": 6,
+			"submarine": 4,
+			"aicraft_carrier": 2,
+			"cyber_power": 95
+		},
+		"resources": {
+			"oil": 3000,
+			"metal": 2500,
+			"coal": 1500,
+			"gas": 2000,
+			"uranium": 100,
+			"food": 6000,
+			"energy": 9000,
+			"wood": 1500,
+			"gold": 300,
+			"rare_earth": 100,
+			"digital": 120
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 45000000000,
+			"avg_salary": 2200,
+			"tax_rate": 20,
+			"military_budget": 25,
+			"infrastructure_budget": 25,
+			"social_bugdet": 25
+		},
+		"infrastructure": {
+			"factory": 400000,
+			"railways": 16000,
+			"ports": 40,
+			"airports": 140
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"Portugal": {
+		"population": {
+			"pop_number": 10300000,
+			"approval": 100
+		},
+		"army": {
+			"soldier": 2500,
+			"tank": 15,
+			"armored_vehicle": 60,
+			"aircraft": 5,
+			"destroyer": 3,
+			"submarine": 2,
+			"aicraft_carrier": 0,
+			"cyber_power": 55
+		},
+		"resources": {
+			"oil": 200,
+			"metal": 800,
+			"coal": 100,
+			"gas": 50,
+			"uranium": 80,
+			"food": 3000,
+			"energy": 4000,
+			"wood": 3500,
+			"gold": 50,
+			"rare_earth": 200,
+			"digital": 40
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 5000000000,
+			"avg_salary": 1000,
+			"tax_rate": 23,
+			"military_budget": 25,
+			"infrastructure_budget": 25,
+			"social_bugdet": 25
+		},
+		"infrastructure": {
+			"factory": 80000,
+			"railways": 2700,
+			"ports": 15,
+			"airports": 40
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"Norway": {
+		"population": {
+			"pop_number": 5400000,
+			"approval": 100
+		},
+		"army": {
+			"soldier": 2000,
+			"tank": 36,
+			"armored_vehicle": 100,
+			"aircraft": 10,
+			"destroyer": 4,
+			"submarine": 4,
+			"aicraft_carrier": 0,
+			"cyber_power": 80
+		},
+		"resources": {
+			"oil": 50000,
+			"metal": 3000,
+			"coal": 500,
+			"gas": 40000,
+			"uranium": 20,
+			"food": 4000,
+			"energy": 15000,
+			"wood": 5000,
+			"gold": 200,
+			"rare_earth": 300,
+			"digital": 90
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 20000000000,
+			"avg_salary": 4000,
+			"tax_rate": 22,
+			"military_budget": 25,
+			"infrastructure_budget": 25,
+			"social_bugdet": 25
+		},
+		"infrastructure": {
+			"factory": 120000,
+			"railways": 4000,
+			"ports": 50,
+			"airports": 100
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"Sweden": {
+		"population": {
+			"pop_number": 10500000,
+			"approval": 100
+		},
+		"army": {
+			"soldier": 3000,
+			"tank": 120,
+			"armored_vehicle": 300,
+			"aircraft": 60,
+			"destroyer": 5,
+			"submarine": 5,
+			"aicraft_carrier": 0,
+			"cyber_power": 85
+		},
+		"resources": {
+			"oil": 500,
+			"metal": 8000,
+			"coal": 300,
+			"gas": 200,
+			"uranium": 50,
+			"food": 5000,
+			"energy": 12000,
+			"wood": 15000,
+			"gold": 300,
+			"rare_earth": 500,
+			"digital": 100
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 18000000000,
+			"avg_salary": 3500,
+			"tax_rate": 28,
+			"military_budget": 25,
+			"infrastructure_budget": 25,
+			"social_bugdet": 25
+		},
+		"infrastructure": {
+			"factory": 150000,
+			"railways": 11000,
+			"ports": 30,
+			"airports": 90
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"Switzerland": {
+		"population": {
+			"pop_number": 8700000,
+			"approval": 100
+		},
+		"army": {
+			"soldier": 4000,
+			"tank": 134,
+			"armored_vehicle": 200,
+			"aircraft": 30,
+			"destroyer": 0,
+			"submarine": 0,
+			"aicraft_carrier": 0,
+			"cyber_power": 90
+		},
+		"resources": {
+			"oil": 0,
+			"metal": 1000,
+			"coal": 0,
+			"gas": 0,
+			"uranium": 0,
+			"food": 3000,
+			"energy": 8000,
+			"wood": 2000,
+			"gold": 1500,
+			"rare_earth": 50,
+			"digital": 150
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 22000000000,
+			"avg_salary": 5500,
+			"tax_rate": 15,
+			"military_budget": 25,
+			"infrastructure_budget": 25,
+			"social_bugdet": 25
+		},
+		"infrastructure": {
+			"factory": 100000,
+			"railways": 5300,
+			"ports": 0,
+			"airports": 40
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"Belgium": {
+		"population": {
+			"pop_number": 11600000,
+			"approval": 100
+		},
+		"army": {
+			"soldier": 2500,
+			"tank": 50,
+			"armored_vehicle": 150,
+			"aircraft": 54,
+			"destroyer": 2,
+			"submarine": 0,
+			"aicraft_carrier": 0,
+			"cyber_power": 75
+		},
+		"resources": {
+			"oil": 0,
+			"metal": 500,
+			"coal": 200,
+			"gas": 0,
+			"uranium": 0,
+			"food": 4000,
+			"energy": 6000,
+			"wood": 500,
+			"gold": 100,
+			"rare_earth": 50,
+			"digital": 80
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 14000000000,
+			"avg_salary": 3000,
+			"tax_rate": 25,
+			"military_budget": 25,
+			"infrastructure_budget": 25,
+			"social_bugdet": 25
+		},
+		"infrastructure": {
+			"factory": 120000,
+			"railways": 3600,
+			"ports": 12,
+			"airports": 30
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"Netherlands": {
+		"population": {
+			"pop_number": 17900000,
+			"approval": 100
+		},
+		"army": {
+			"soldier": 3500,
+			"tank": 18,
+			"armored_vehicle": 200,
+			"aircraft": 24,
+			"destroyer": 4,
+			"submarine": 4,
+			"aicraft_carrier": 0,
+			"cyber_power": 85
+		},
+		"resources": {
+			"oil": 1000,
+			"metal": 500,
+			"coal": 0,
+			"gas": 8000,
+			"uranium": 0,
+			"food": 7000,
+			"energy": 8000,
+			"wood": 400,
+			"gold": 150,
+			"rare_earth": 50,
+			"digital": 130
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 22000000000,
+			"avg_salary": 3200,
+			"tax_rate": 21,
+			"military_budget": 25,
+			"infrastructure_budget": 25,
+			"social_bugdet": 25
+		},
+		"infrastructure": {
+			"factory": 180000,
+			"railways": 3200,
+			"ports": 35,
+			"airports": 30
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"Austria": {
+		"population": {
+			"pop_number": 9100000,
+			"approval": 100
+		},
+		"army": {
+			"soldier": 2200,
+			"tank": 56,
+			"armored_vehicle": 180,
+			"aircraft": 15,
+			"destroyer": 0,
+			"submarine": 0,
+			"aicraft_carrier": 0,
+			"cyber_power": 70
+		},
+		"resources": {
+			"oil": 300,
+			"metal": 2000,
+			"coal": 100,
+			"gas": 500,
+			"uranium": 0,
+			"food": 4000,
+			"energy": 7000,
+			"wood": 4000,
+			"gold": 200,
+			"rare_earth": 100,
+			"digital": 80
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 13000000000,
+			"avg_salary": 3000,
+			"tax_rate": 20,
+			"military_budget": 25,
+			"infrastructure_budget": 25,
+			"social_bugdet": 25
+		},
+		"infrastructure": {
+			"factory": 130000,
+			"railways": 6000,
+			"ports": 0,
+			"airports": 50
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	},
+	"Denmark": {
+		"population": {
+			"pop_number": 5900000,
+			"approval": 100
+		},
+		"army": {
+			"soldier": 1800,
+			"tank": 44,
+			"armored_vehicle": 120,
+			"aircraft": 30,
+			"destroyer": 3,
+			"submarine": 0,
+			"aicraft_carrier": 0,
+			"cyber_power": 80
+		},
+		"resources": {
+			"oil": 4000,
+			"metal": 300,
+			"coal": 0,
+			"gas": 3000,
+			"uranium": 0,
+			"food": 6000,
+			"energy": 7000,
+			"wood": 800,
+			"gold": 50,
+			"rare_earth": 50,
+			"digital": 100
+		},
+		"economy": {
+			"type": "capitalist",
+			"money": 16000000000,
+			"avg_salary": 3800,
+			"tax_rate": 22,
+			"military_budget": 25,
+			"infrastructure_budget": 25,
+			"social_bugdet": 25
+		},
+		"infrastructure": {
+			"factory": 100000,
+			"railways": 2600,
+			"ports": 25,
+			"airports": 50
+		},
+		"terrain": {
+			"oil": 5000,
+			"view_oil": 0,
+			"metal": 3000,
+			"view_metal": 0,
+			"coal": 2000,
+			"view_coal": 0,
+			"gas": 1500,
+			"view_gas": 0,
+			"uranium": 200,
+			"view_uranium": 0,
+			"food": 8000,
+			"view_food": 0,
+			"energy": 10000,
+			"view_energy": 0,
+			"wood": 2500,
+			"view_wood": 0,
+			"gold": 400,
+			"view_gold": 0,
+			"rare_earth": 150,
+			"view_rare_earth": 0
+		}
+	}
+}

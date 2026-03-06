@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://mnf8e80tln1k"]
+
+[ext_resource type="Texture2D" uid="uid://dhx4e8fv4fpvv" path="res://mapdata/map.png" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://d074qhgssaxv6" path="res://map.gd" id="2_0e48y"]
+[ext_resource type="Script" uid="uid://dvvvv0oji4ajs" path="res://label.gd" id="3_epypp"]
+[ext_resource type="Script" uid="uid://dtlng6cs37h5b" path="res://data.gd" id="4_0hol4"]
+[ext_resource type="Script" uid="uid://dl5ryr6eg7mel" path="res://h_box_container.gd" id="4_q6r6c"]
+[ext_resource type="Script" uid="uid://0ecwws4c338e" path="res://economy.gd" id="5_kdubu"]
+
+[node name="Node2D" type="Node2D" unique_id=2030354045]
+script = ExtResource("2_0e48y")
+
+[node name="Map" type="Sprite2D" parent="." unique_id=1747331567]
+position = Vector2(575.99994, 324.00003)
+scale = Vector2(0.60663515, 0.6130559)
+texture = ExtResource("1_0e48y")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=865678297]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=412389204]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=590377548]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+script = ExtResource("3_epypp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=167330347]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.5
+offset_top = -40.0
+offset_right = 66.5
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_q6r6c")
+
+[node name="Economy" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1838439466]
+layout_mode = 2
+text = "Economy"
+
+[node name="Army" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=613833864]
+layout_mode = 2
+text = "Army"
+
+[node name="Infrastructure" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=127444775]
+layout_mode = 2
+text = "Infrastructure"
+
+[node name="Ressources" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=682316790]
+layout_mode = 2
+text = "Ressources"
+
+[node name="Country" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1583985478]
+layout_mode = 2
+text = "Country"
+
+[node name="Economy" type="Panel" parent="CanvasLayer" unique_id=1033988912]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_kdubu")
+
+[node name="Label" type="Label" parent="CanvasLayer/Economy" unique_id=1634775902]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_epypp")
+
+[node name="Data" type="Node" parent="." unique_id=1960506115]
+script = ExtResource("4_0hol4")
+
+[connection signal="button_down" from="CanvasLayer/HBoxContainer/Economy" to="CanvasLayer/HBoxContainer" method="_on_economy_button_down"]
+[connection signal="button_down" from="CanvasLayer/HBoxContainer/Army" to="CanvasLayer/HBoxContainer" method="_on_army_button_down"]
+[connection signal="button_down" from="CanvasLayer/HBoxContainer/Infrastructure" to="CanvasLayer/HBoxContainer" method="_on_infrastructure_button_down"]
+[connection signal="button_down" from="CanvasLayer/HBoxContainer/Ressources" to="CanvasLayer/HBoxContainer" method="_on_ressources_button_down"]
+[connection signal="button_down" from="CanvasLayer/HBoxContainer/Country" to="CanvasLayer/HBoxContainer" method="_on_country_button_down"]
