@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ema1xxk3kmw5"
+
+[deps]
+
+files=["res://globaldata/market.en.translation", "res://globaldata/market.en.translation", "res://globaldata/market.en.translation", "res://globaldata/market.en.translation", "res://globaldata/market.en.translation"]
+
+source_file="res://globaldata/market.csv"
+dest_files=["res://globaldata/market.en.translation", "res://globaldata/market.en.translation", "res://globaldata/market.en.translation", "res://globaldata/market.en.translation", "res://globaldata/market.en.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

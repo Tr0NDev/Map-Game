@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://01r3j67hiddk"
+
+[deps]
+
+files=["res://globaldata/contract.from.translation", "res://globaldata/contract.to.translation", "res://globaldata/contract.from.translation", "res://globaldata/contract.from.translation", "res://globaldata/contract.to.translation", "res://globaldata/contract.to.translation", "res://globaldata/contract.duration.translation", "res://globaldata/contract.turns.translation", "res://globaldata/contract.status.translation"]
+
+source_file="res://globaldata/contract.csv"
+dest_files=["res://globaldata/contract.from.translation", "res://globaldata/contract.to.translation", "res://globaldata/contract.from.translation", "res://globaldata/contract.from.translation", "res://globaldata/contract.to.translation", "res://globaldata/contract.to.translation", "res://globaldata/contract.duration.translation", "res://globaldata/contract.turns.translation", "res://globaldata/contract.status.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

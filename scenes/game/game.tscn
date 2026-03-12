@@ -1,0 +1,805 @@
+[gd_scene format=3 uid="uid://mnf8e80tln1k"]
+
+[ext_resource type="Script" uid="uid://d074qhgssaxv6" path="res://scenes/game/map.gd" id="1_10c2w"]
+[ext_resource type="Texture2D" uid="uid://dhx4e8fv4fpvv" path="res://mapdata/map.png" id="3_gc57s"]
+[ext_resource type="Script" uid="uid://dvvvv0oji4ajs" path="res://scenes/game/selected_country.gd" id="4_8b66f"]
+[ext_resource type="Script" uid="uid://cgqs6p1mp8nho" path="res://scenes/game/other_country.gd" id="5_3jaai"]
+[ext_resource type="Script" uid="uid://ddsaxebh4vpdr" path="res://scenes/game/ohter_country_label.gd" id="6_1iff4"]
+[ext_resource type="Script" uid="uid://0ecwws4c338e" path="res://scenes/game/GamePanel.gd" id="7_4vuph"]
+[ext_resource type="Script" uid="uid://dug4msyuapwwf" path="res://scenes/game/turn.gd" id="7_8b66f"]
+[ext_resource type="Script" uid="uid://dkilpdmcjrmvp" path="res://scenes/game/other_country_info_label.gd" id="8_wdnak"]
+[ext_resource type="Script" uid="uid://dl5ryr6eg7mel" path="res://scenes/game/buttonmenu.gd" id="9_h48ew"]
+[ext_resource type="Script" uid="uid://b3rxcx2emrodb" path="res://scenes/game/economy_label.gd" id="10_fty5b"]
+[ext_resource type="Script" uid="uid://bl01pn6t015xo" path="res://scenes/game/army_label.gd" id="12_firvq"]
+[ext_resource type="Script" uid="uid://djhu4ck2vyxu" path="res://scenes/game/infrastructure_label.gd" id="13_8krtj"]
+[ext_resource type="Script" uid="uid://buotqsfp34mqf" path="res://scenes/game/ressource_label.gd" id="14_fydea"]
+[ext_resource type="Script" uid="uid://83gmrpe13arb" path="res://scenes/game/country_label.gd" id="15_af6p5"]
+[ext_resource type="Script" uid="uid://bxeyuac7j6dlb" path="res://scenes/game/terrain_label.gd" id="16_mumkj"]
+[ext_resource type="Script" uid="uid://c07cfqv0mo3ve" path="res://scenes/game/my_info.gd" id="17_2vph8"]
+[ext_resource type="Script" uid="uid://dtlng6cs37h5b" path="res://scenes/game/data.gd" id="18_0gkf7"]
+[ext_resource type="Script" uid="uid://dnk050i6vwhpo" path="res://scenes/game/next_turn_label.gd" id="18_pg2xm"]
+[ext_resource type="Script" uid="uid://dtiyoto4l56b3" path="res://scenes/game/network.gd" id="19_6ehwc"]
+[ext_resource type="Script" uid="uid://bmcw1ehlimq00" path="res://scenes/game/vertical_menu.gd" id="20_3jaai"]
+[ext_resource type="Script" uid="uid://c5ll8xo5fb4xh" path="res://scenes/game/market.gd" id="21_1iff4"]
+[ext_resource type="Script" uid="uid://bvfo6e18lrykg" path="res://scenes/game/diplomacy.gd" id="22_1iff4"]
+[ext_resource type="Script" uid="uid://6p1e6d8tb8x6" path="res://scenes/game/contract.gd" id="23_4vuph"]
+[ext_resource type="Script" uid="uid://d4miyclk4wnrb" path="res://scenes/game/create.gd" id="24_wdnak"]
+[ext_resource type="Script" uid="uid://dfl0a7wltbg1k" path="res://scenes/game/population.gd" id="25_fty5b"]
+[ext_resource type="Script" uid="uid://cp663ghrjnwy6" path="res://scenes/game/war.gd" id="25_h48ew"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ta5nu"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqns4"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0ka3"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h7mo"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr8wp"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2bti"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fty5b"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2dhg"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_firvq"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8krtj"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_af6p5"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pg2xm"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc57s"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trtic"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d21ai"]
+bg_color = Color(0.13636076, 0.0036181496, 0.029277999, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iff4"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdnak"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h48ew"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fydea"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[node name="game" type="Node2D" unique_id=2030354045]
+script = ExtResource("1_10c2w")
+
+[node name="Map" type="Sprite2D" parent="." unique_id=1747331567]
+position = Vector2(575.99994, 324.00003)
+scale = Vector2(0.60663515, 0.6130559)
+texture = ExtResource("3_gc57s")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=865678297]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=412389204]
+
+[node name="My_Info" type="Label" parent="CanvasLayer" unique_id=148364096]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ta5nu")
+horizontal_alignment = 2
+script = ExtResource("17_2vph8")
+
+[node name="Selected_Country" type="Label" parent="CanvasLayer" unique_id=590377548]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ta5nu")
+script = ExtResource("4_8b66f")
+
+[node name="ButtonMenu" type="HBoxContainer" parent="CanvasLayer" unique_id=167330347]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -40.0
+offset_right = 224.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("9_h48ew")
+
+[node name="Economy" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=1838439466]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_hqns4")
+text = "Economy"
+
+[node name="Army" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=613833864]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_x0ka3")
+text = "Army"
+
+[node name="Infrastructure" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=127444775]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0h7mo")
+text = "Infrastructure"
+
+[node name="Ressources" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=682316790]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nr8wp")
+text = "Ressources"
+
+[node name="Country" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=1583985478]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2bti")
+text = "Country"
+
+[node name="Terrain" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=1058508916]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2bti")
+text = "Terrain"
+
+[node name="Vertical_Menu" type="VBoxContainer" parent="CanvasLayer" unique_id=228547439]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 20.0
+grow_vertical = 2
+script = ExtResource("20_3jaai")
+
+[node name="Market" type="Button" parent="CanvasLayer/Vertical_Menu" unique_id=1388398622]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fty5b")
+text = "Market"
+
+[node name="Diplomacy" type="Button" parent="CanvasLayer/Vertical_Menu" unique_id=895827976]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_l2dhg")
+text = "Diplomacy"
+
+[node name="Contract" type="Button" parent="CanvasLayer/Vertical_Menu" unique_id=261604420]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_firvq")
+text = "Contract"
+
+[node name="Create" type="Button" parent="CanvasLayer/Vertical_Menu" unique_id=1764971297]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8krtj")
+text = "Create"
+
+[node name="War" type="Button" parent="CanvasLayer/Vertical_Menu" unique_id=1228731937]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_af6p5")
+text = "War"
+
+[node name="Population" type="Button" parent="CanvasLayer/Vertical_Menu" unique_id=674051517]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fty5b")
+text = "Population"
+
+[node name="Next_Turn" type="Panel" parent="CanvasLayer" unique_id=219152825]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pg2xm")
+
+[node name="Next_Turn_Label" type="Label" parent="CanvasLayer/Next_Turn" unique_id=1460716218]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+horizontal_alignment = 2
+script = ExtResource("18_pg2xm")
+
+[node name="Next_Turn_Button" type="Button" parent="CanvasLayer/Next_Turn" unique_id=543862422]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_gc57s")
+text = "Next Turn"
+
+[node name="Turn" type="Node" parent="CanvasLayer/Next_Turn" unique_id=2066902892]
+script = ExtResource("7_8b66f")
+
+[node name="Other_Country" type="Panel" parent="CanvasLayer" unique_id=305937889]
+visible = false
+offset_right = 275.0
+offset_bottom = 140.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_trtic")
+script = ExtResource("5_3jaai")
+
+[node name="Ohter_Country_Label" type="Label" parent="CanvasLayer/Other_Country" unique_id=821767872]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("6_1iff4")
+
+[node name="Other_Country_Close" type="Button" parent="CanvasLayer/Other_Country" unique_id=86679563]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Other_Country_Info_Button" type="Button" parent="CanvasLayer/Other_Country" unique_id=743696166]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 103.0
+offset_right = 86.0
+offset_bottom = 134.0
+text = "Spy"
+
+[node name="Other_Country_Info" type="Panel" parent="CanvasLayer/Other_Country" unique_id=812694239]
+visible = false
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 315.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Other_Country_Info_Label" type="Label" parent="CanvasLayer/Other_Country/Other_Country_Info" unique_id=875494171]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("8_wdnak")
+
+[node name="Other_Country_Info_Close" type="Button" parent="CanvasLayer/Other_Country/Other_Country_Info" unique_id=1436219448]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Other_Country_Vbox" type="VBoxContainer" parent="CanvasLayer/Other_Country/Other_Country_Info" unique_id=557641241]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 25.0
+offset_right = 210.0
+offset_bottom = 35.0
+
+[node name="Left_Label" type="Label" parent="CanvasLayer/Other_Country/Other_Country_Info" unique_id=1438470225]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 30.0
+offset_right = 215.0
+offset_bottom = 53.0
+
+[node name="Right_Label" type="Label" parent="CanvasLayer/Other_Country/Other_Country_Info" unique_id=226123402]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 30.0
+offset_right = 60.0
+offset_bottom = 53.0
+
+[node name="Relation_Button" type="Button" parent="CanvasLayer/Other_Country/Other_Country_Info" unique_id=1612859995]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+text = "Relations"
+
+[node name="Economy" type="Panel" parent="CanvasLayer" unique_id=1033988912]
+visible = false
+offset_right = 275.0
+offset_bottom = 210.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Economy_Label" type="Label" parent="CanvasLayer/Economy" unique_id=1634775902]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("10_fty5b")
+
+[node name="Economy_Close" type="Button" parent="CanvasLayer/Economy" unique_id=456665512]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Army" type="Panel" parent="CanvasLayer" unique_id=686314443]
+visible = false
+offset_right = 275.0
+offset_bottom = 260.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Army_Label" type="Label" parent="CanvasLayer/Army" unique_id=893366516]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("12_firvq")
+
+[node name="Army_Close" type="Button" parent="CanvasLayer/Army" unique_id=582397617]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Infrastructure" type="Panel" parent="CanvasLayer" unique_id=95475999]
+visible = false
+offset_right = 275.0
+offset_bottom = 315.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Infrastructure_Label" type="Label" parent="CanvasLayer/Infrastructure" unique_id=586039416]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("13_8krtj")
+
+[node name="Infrastructure_Close" type="Button" parent="CanvasLayer/Infrastructure" unique_id=1548800838]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Infrastructure" unique_id=624023467]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 25.0
+offset_right = 210.0
+offset_bottom = 35.0
+
+[node name="Resources" type="Panel" parent="CanvasLayer" unique_id=1950809736]
+visible = false
+offset_right = 275.0
+offset_bottom = 315.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Resources_Label" type="Label" parent="CanvasLayer/Resources" unique_id=919007878]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("14_fydea")
+
+[node name="Resources_Close" type="Button" parent="CanvasLayer/Resources" unique_id=1818586688]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Country" type="Panel" parent="CanvasLayer" unique_id=241604420]
+visible = false
+offset_right = 275.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Country_Label" type="Label" parent="CanvasLayer/Country" unique_id=383993037]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("15_af6p5")
+
+[node name="Country_Close" type="Button" parent="CanvasLayer/Country" unique_id=289377191]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Terrain" type="Panel" parent="CanvasLayer" unique_id=1545458330]
+visible = false
+offset_right = 275.0
+offset_bottom = 285.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Terrain_Label" type="Label" parent="CanvasLayer/Terrain" unique_id=1074657470]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("16_mumkj")
+
+[node name="Terrain_Close" type="Button" parent="CanvasLayer/Terrain" unique_id=1493069677]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Terrain" unique_id=252304706]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 25.0
+offset_right = 210.0
+offset_bottom = 35.0
+
+[node name="Search" type="Label" parent="CanvasLayer/Terrain" unique_id=980791599]
+layout_mode = 0
+offset_left = 180.0
+offset_right = 236.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 10
+text = "Search:"
+
+[node name="Market" type="Panel" parent="CanvasLayer" unique_id=933512447]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 700.0
+offset_bottom = 380.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1iff4")
+script = ExtResource("7_4vuph")
+
+[node name="Market_Close" type="Button" parent="CanvasLayer/Market" unique_id=851025488]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Market" type="Node" parent="CanvasLayer/Market" unique_id=1554129236]
+script = ExtResource("21_1iff4")
+
+[node name="Market_Label" type="Label" parent="CanvasLayer/Market" unique_id=400542103]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Market:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Market" unique_id=1545801124]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 105.0
+offset_right = 662.0
+offset_bottom = 316.0
+
+[node name="OffersVBox" type="VBoxContainer" parent="CanvasLayer/Market/ScrollContainer" unique_id=771690843]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Market" unique_id=1268521488]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 45.0
+offset_right = 70.0
+offset_bottom = 85.0
+
+[node name="Country_Info" type="Label" parent="CanvasLayer/Market" unique_id=1264772862]
+layout_mode = 0
+offset_top = 85.0
+offset_right = 40.0
+offset_bottom = 108.0
+
+[node name="Sell" type="Button" parent="CanvasLayer/Market" unique_id=1483045698]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 350.0
+offset_right = 295.0
+offset_bottom = 381.0
+text = "Sell"
+
+[node name="SellPrice" type="SpinBox" parent="CanvasLayer/Market" unique_id=1449186864]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -50.0
+offset_right = 41.5
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1000000000.0
+step = 10000.0
+
+[node name="SellAmount" type="SpinBox" parent="CanvasLayer/Market" unique_id=785373003]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -50.0
+offset_right = 136.5
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1000000000.0
+step = 10000.0
+
+[node name="InfoButton" type="Label" parent="CanvasLayer/Market" unique_id=523934421]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 323.0
+offset_right = 349.0
+offset_bottom = 346.0
+text = "Price             Amount    Anonymous"
+
+[node name="Anonymous" type="CheckBox" parent="CanvasLayer/Market" unique_id=1629634081]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 353.0
+offset_right = 540.0
+offset_bottom = 377.0
+
+[node name="Diplomacy" type="Panel" parent="CanvasLayer" unique_id=205821672]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 700.0
+offset_bottom = 380.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1iff4")
+script = ExtResource("7_4vuph")
+
+[node name="Diplomacy_Close" type="Button" parent="CanvasLayer/Diplomacy" unique_id=879629458]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Diplomacy" type="Node" parent="CanvasLayer/Diplomacy" unique_id=1306636380]
+script = ExtResource("22_1iff4")
+
+[node name="Title" type="Label" parent="CanvasLayer/Diplomacy" unique_id=963234409]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Diplomacy" unique_id=1963685156]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 664.0
+offset_bottom = 373.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Diplomacy/ScrollContainer" unique_id=1353461104]
+layout_mode = 2
+
+[node name="Contract" type="Panel" parent="CanvasLayer" unique_id=895444782]
+visible = false
+offset_top = 304.0
+offset_right = 500.0
+offset_bottom = 704.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdnak")
+script = ExtResource("7_4vuph")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Contract" unique_id=1449624787]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 40.0
+offset_right = 491.0
+offset_bottom = 373.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Contract/ScrollContainer" unique_id=780504928]
+layout_mode = 2
+
+[node name="Contract" type="Node" parent="CanvasLayer/Contract" unique_id=493708218]
+script = ExtResource("23_4vuph")
+
+[node name="Contract_Close" type="Button" parent="CanvasLayer/Contract" unique_id=1692247230]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Contract_Label" type="Label" parent="CanvasLayer/Contract" unique_id=2020073391]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Contract:"
+
+[node name="Create" type="Panel" parent="CanvasLayer" unique_id=335071808]
+visible = false
+offset_right = 600.0
+offset_bottom = 500.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h48ew")
+script = ExtResource("7_4vuph")
+
+[node name="Create_Close" type="Button" parent="CanvasLayer/Create" unique_id=135624191]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Create" type="Node" parent="CanvasLayer/Create" unique_id=584630544]
+script = ExtResource("24_wdnak")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Create" unique_id=2123610285]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 567.0
+offset_bottom = 480.0
+
+[node name="Vbox" type="VBoxContainer" parent="CanvasLayer/Create/ScrollContainer" unique_id=573889238]
+layout_mode = 2
+
+[node name="War" type="Panel" parent="CanvasLayer" unique_id=1102938260]
+visible = false
+offset_right = 500.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fydea")
+script = ExtResource("7_4vuph")
+
+[node name="War_Label" type="Label" parent="CanvasLayer/War" unique_id=492591371]
+layout_mode = 0
+offset_right = 94.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "War:"
+
+[node name="War_Close" type="Button" parent="CanvasLayer/War" unique_id=710357006]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "x"
+
+[node name="War" type="Node" parent="CanvasLayer/War" unique_id=661077270]
+script = ExtResource("25_h48ew")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/War" unique_id=1901956399]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 43.0
+offset_right = 472.0
+offset_bottom = 279.0
+
+[node name="Vbox" type="VBoxContainer" parent="CanvasLayer/War/ScrollContainer" unique_id=12812025]
+layout_mode = 2
+
+[node name="Population" type="Panel" parent="CanvasLayer" unique_id=409598565]
+visible = false
+offset_right = 400.0
+offset_bottom = 500.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fydea")
+script = ExtResource("7_4vuph")
+
+[node name="Population_Close" type="Button" parent="CanvasLayer/Population" unique_id=1566955596]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Population" type="Node" parent="CanvasLayer/Population" unique_id=410558295]
+script = ExtResource("25_fty5b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Population" unique_id=1492539222]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Data" type="Node" parent="." unique_id=1960506115]
+script = ExtResource("18_0gkf7")
+
+[node name="Network" type="Node" parent="." unique_id=39634114]
+script = ExtResource("19_6ehwc")
+
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Economy" to="CanvasLayer/ButtonMenu" method="_on_economy_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Army" to="CanvasLayer/ButtonMenu" method="_on_army_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Infrastructure" to="CanvasLayer/ButtonMenu" method="_on_infrastructure_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Ressources" to="CanvasLayer/ButtonMenu" method="_on_ressources_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Country" to="CanvasLayer/ButtonMenu" method="_on_country_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Terrain" to="CanvasLayer/ButtonMenu" method="_on_terrain_button_down"]
+[connection signal="button_down" from="CanvasLayer/Vertical_Menu/Market" to="CanvasLayer/Vertical_Menu" method="_on_market_button_down"]
+[connection signal="button_down" from="CanvasLayer/Vertical_Menu/Diplomacy" to="CanvasLayer/Vertical_Menu" method="_on_diplomacy_button_down"]
+[connection signal="button_down" from="CanvasLayer/Vertical_Menu/Contract" to="CanvasLayer/Vertical_Menu" method="_on_contract_button_down"]
+[connection signal="button_down" from="CanvasLayer/Vertical_Menu/Create" to="CanvasLayer/Vertical_Menu" method="_on_create_button_down"]
+[connection signal="button_down" from="CanvasLayer/Vertical_Menu/War" to="CanvasLayer/Vertical_Menu" method="_on_war_button_down"]
+[connection signal="button_down" from="CanvasLayer/Vertical_Menu/Population" to="CanvasLayer/Vertical_Menu" method="_on_population_button_down"]
+[connection signal="button_down" from="CanvasLayer/Next_Turn/Next_Turn_Button" to="CanvasLayer/Next_Turn/Next_Turn_Label" method="_on_next_turn_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Other_Country/Other_Country_Close" to="CanvasLayer/Other_Country/Ohter_Country_Label" method="_on_other_country_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Other_Country/Other_Country_Info_Button" to="CanvasLayer/Other_Country/Ohter_Country_Label" method="_on_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Other_Country/Other_Country_Info/Other_Country_Info_Close" to="CanvasLayer/Other_Country/Other_Country_Info/Other_Country_Info_Label" method="_on_other_country_info_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Economy/Economy_Close" to="CanvasLayer/Economy/Economy_Label" method="_on_economy_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Army/Army_Close" to="CanvasLayer/Army/Army_Label" method="_on_army_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Infrastructure/Infrastructure_Close" to="CanvasLayer/Infrastructure/Infrastructure_Label" method="_on_infrastructure_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Resources/Resources_Close" to="CanvasLayer/Resources/Resources_Label" method="_on_resources_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Country/Country_Close" to="CanvasLayer/Country/Country_Label" method="_on_country_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Terrain/Terrain_Close" to="CanvasLayer/Terrain/Terrain_Label" method="_on_country_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Market/Market_Close" to="CanvasLayer/Market/Market" method="_on_market_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Diplomacy/Diplomacy_Close" to="CanvasLayer/Diplomacy/Diplomacy" method="_on_diplomacy_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Contract/Contract_Close" to="CanvasLayer/Contract/Contract" method="_on_contract_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Create/Create_Close" to="CanvasLayer/Create/Create" method="_on_create_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/War/War_Close" to="CanvasLayer/War/War" method="_on_war_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Population/Population_Close" to="CanvasLayer/Population/Population" method="_on_population_close_button_down"]

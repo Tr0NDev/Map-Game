@@ -1,0 +1,4 @@
+contract_id,from_country,to_country,from_resource,from_quantity,to_resource,to_quantity,duration_turns,turns_remaining,status
+1,France,Germany,food,500,metal,200,5,5,active
+2,Norway,Netherlands,oil,300,digital,100,3,3,active
+3,Sweden,Denmark,wood,1000,gold,50,10,10,active

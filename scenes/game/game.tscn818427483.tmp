@@ -1,0 +1,433 @@
+[gd_scene format=3 uid="uid://mnf8e80tln1k"]
+
+[ext_resource type="Script" uid="uid://d074qhgssaxv6" path="res://scenes/game/map.gd" id="1_10c2w"]
+[ext_resource type="Texture2D" uid="uid://bvix6toh55yd" path="res://mapdata/faded_map.png" id="2_pg2xm"]
+[ext_resource type="Texture2D" uid="uid://dhx4e8fv4fpvv" path="res://mapdata/map.png" id="3_gc57s"]
+[ext_resource type="Script" uid="uid://dvvvv0oji4ajs" path="res://scenes/game/selected_country.gd" id="4_8b66f"]
+[ext_resource type="Script" uid="uid://cgqs6p1mp8nho" path="res://scenes/game/other_country.gd" id="5_3jaai"]
+[ext_resource type="Script" uid="uid://ddsaxebh4vpdr" path="res://scenes/game/ohter_country_label.gd" id="6_1iff4"]
+[ext_resource type="Script" uid="uid://0ecwws4c338e" path="res://scenes/game/GamePanel.gd" id="7_4vuph"]
+[ext_resource type="Script" uid="uid://dug4msyuapwwf" path="res://scenes/game/turn.gd" id="7_8b66f"]
+[ext_resource type="Script" uid="uid://dkilpdmcjrmvp" path="res://scenes/game/other_country_info_label.gd" id="8_wdnak"]
+[ext_resource type="Script" uid="uid://dl5ryr6eg7mel" path="res://scenes/game/buttonmenu.gd" id="9_h48ew"]
+[ext_resource type="Script" uid="uid://b3rxcx2emrodb" path="res://scenes/game/economy_label.gd" id="10_fty5b"]
+[ext_resource type="Script" uid="uid://cwoyyjgdca377" path="res://scenes/game/economy_node.gd" id="11_l2dhg"]
+[ext_resource type="Script" uid="uid://bl01pn6t015xo" path="res://scenes/game/army_label.gd" id="12_firvq"]
+[ext_resource type="Script" uid="uid://djhu4ck2vyxu" path="res://scenes/game/infrastructure_label.gd" id="13_8krtj"]
+[ext_resource type="Script" uid="uid://buotqsfp34mqf" path="res://scenes/game/ressource_label.gd" id="14_fydea"]
+[ext_resource type="Script" uid="uid://83gmrpe13arb" path="res://scenes/game/country_label.gd" id="15_af6p5"]
+[ext_resource type="Script" uid="uid://bxeyuac7j6dlb" path="res://scenes/game/terrain_label.gd" id="16_mumkj"]
+[ext_resource type="Script" uid="uid://c07cfqv0mo3ve" path="res://scenes/game/my_info.gd" id="17_2vph8"]
+[ext_resource type="Script" uid="uid://dtlng6cs37h5b" path="res://scenes/game/data.gd" id="18_0gkf7"]
+[ext_resource type="Script" uid="uid://dnk050i6vwhpo" path="res://scenes/game/next_turn_label.gd" id="18_pg2xm"]
+[ext_resource type="Script" uid="uid://dtiyoto4l56b3" path="res://scenes/game/network.gd" id="19_6ehwc"]
+[ext_resource type="Script" uid="uid://einbl037f6wc" path="res://scenes/game/price.gd" id="22_3jaai"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ta5nu"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pg2xm"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc57s"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqns4"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0ka3"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h7mo"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr8wp"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2bti"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trtic"]
+bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d21ai"]
+bg_color = Color(0.13636076, 0.0036181496, 0.029277999, 0.8509804)
+
+[node name="game" type="Node2D" unique_id=2030354045]
+script = ExtResource("1_10c2w")
+
+[node name="Faded_Map" type="Sprite2D" parent="." unique_id=2090929633]
+position = Vector2(575.99994, 324.00003)
+scale = Vector2(0.6066352, 0.61305594)
+texture = ExtResource("2_pg2xm")
+
+[node name="Map" type="Sprite2D" parent="." unique_id=1747331567]
+visible = false
+position = Vector2(575.99994, 324.00003)
+scale = Vector2(0.60663515, 0.6130559)
+texture = ExtResource("3_gc57s")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=865678297]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=412389204]
+
+[node name="My_Info" type="Label" parent="CanvasLayer" unique_id=148364096]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ta5nu")
+horizontal_alignment = 2
+script = ExtResource("17_2vph8")
+
+[node name="Selected_Country" type="Label" parent="CanvasLayer" unique_id=590377548]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ta5nu")
+script = ExtResource("4_8b66f")
+
+[node name="Next_Turn" type="Panel" parent="CanvasLayer" unique_id=219152825]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pg2xm")
+
+[node name="Next_Turn_Label" type="Label" parent="CanvasLayer/Next_Turn" unique_id=1460716218]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+horizontal_alignment = 2
+script = ExtResource("18_pg2xm")
+
+[node name="Next_Turn_Button" type="Button" parent="CanvasLayer/Next_Turn" unique_id=543862422]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_gc57s")
+text = "Next Turn"
+
+[node name="Turn" type="Node" parent="CanvasLayer/Next_Turn" unique_id=2066902892]
+script = ExtResource("7_8b66f")
+
+[node name="ButtonMenu" type="HBoxContainer" parent="CanvasLayer" unique_id=167330347]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -40.0
+offset_right = 224.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("9_h48ew")
+
+[node name="Economy" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=1838439466]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_hqns4")
+text = "Economy"
+
+[node name="Army" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=613833864]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_x0ka3")
+text = "Army"
+
+[node name="Infrastructure" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=127444775]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0h7mo")
+text = "Infrastructure"
+
+[node name="Ressources" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=682316790]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nr8wp")
+text = "Ressources"
+
+[node name="Country" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=1583985478]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2bti")
+text = "Country"
+
+[node name="Terrain" type="Button" parent="CanvasLayer/ButtonMenu" unique_id=1058508916]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2bti")
+text = "Terrain"
+
+[node name="Other_Country" type="Panel" parent="CanvasLayer" unique_id=305937889]
+visible = false
+offset_right = 275.0
+offset_bottom = 140.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_trtic")
+script = ExtResource("5_3jaai")
+
+[node name="Ohter_Country_Label" type="Label" parent="CanvasLayer/Other_Country" unique_id=821767872]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("6_1iff4")
+
+[node name="Other_Country_Close" type="Button" parent="CanvasLayer/Other_Country" unique_id=86679563]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Other_Country_Info_Button" type="Button" parent="CanvasLayer/Other_Country" unique_id=743696166]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 103.0
+offset_right = 86.0
+offset_bottom = 134.0
+text = "See more"
+
+[node name="Other_Country_Info" type="Panel" parent="CanvasLayer/Other_Country" unique_id=812694239]
+visible = false
+layout_mode = 0
+offset_right = 275.0
+offset_bottom = 285.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Other_Country_Info_Label" type="Label" parent="CanvasLayer/Other_Country/Other_Country_Info" unique_id=875494171]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("8_wdnak")
+
+[node name="Other_Country_Info_Close" type="Button" parent="CanvasLayer/Other_Country/Other_Country_Info" unique_id=1436219448]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Other_Country_Vbox" type="VBoxContainer" parent="CanvasLayer/Other_Country/Other_Country_Info" unique_id=557641241]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 25.0
+offset_right = 210.0
+offset_bottom = 35.0
+
+[node name="Spy" type="Label" parent="CanvasLayer/Other_Country/Other_Country_Info" unique_id=465218991]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 10
+text = "Spy (3M each):"
+
+[node name="Economy" type="Panel" parent="CanvasLayer" unique_id=1033988912]
+visible = false
+offset_right = 275.0
+offset_bottom = 210.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Economy_Label" type="Label" parent="CanvasLayer/Economy" unique_id=1634775902]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("10_fty5b")
+
+[node name="Economy_Close" type="Button" parent="CanvasLayer/Economy" unique_id=456665512]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Economy_Node" type="Node" parent="CanvasLayer/Economy" unique_id=841442812]
+script = ExtResource("11_l2dhg")
+
+[node name="Army" type="Panel" parent="CanvasLayer" unique_id=686314443]
+visible = false
+offset_right = 275.0
+offset_bottom = 235.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Army_Label" type="Label" parent="CanvasLayer/Army" unique_id=893366516]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("12_firvq")
+
+[node name="Army_Close" type="Button" parent="CanvasLayer/Army" unique_id=582397617]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Infrastructure" type="Panel" parent="CanvasLayer" unique_id=95475999]
+visible = false
+offset_right = 275.0
+offset_bottom = 135.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Infrastructure_Label" type="Label" parent="CanvasLayer/Infrastructure" unique_id=586039416]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("13_8krtj")
+
+[node name="Infrastructure_Close" type="Button" parent="CanvasLayer/Infrastructure" unique_id=1548800838]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Resources" type="Panel" parent="CanvasLayer" unique_id=1950809736]
+visible = false
+offset_right = 275.0
+offset_bottom = 315.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Resources_Label" type="Label" parent="CanvasLayer/Resources" unique_id=919007878]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("14_fydea")
+
+[node name="Resources_Close" type="Button" parent="CanvasLayer/Resources" unique_id=1818586688]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Country" type="Panel" parent="CanvasLayer" unique_id=241604420]
+visible = false
+offset_right = 275.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Country_Label" type="Label" parent="CanvasLayer/Country" unique_id=383993037]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("15_af6p5")
+
+[node name="Country_Close" type="Button" parent="CanvasLayer/Country" unique_id=289377191]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="Terrain" type="Panel" parent="CanvasLayer" unique_id=1545458330]
+visible = false
+offset_right = 275.0
+offset_bottom = 285.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
+script = ExtResource("7_4vuph")
+
+[node name="Terrain_Label" type="Label" parent="CanvasLayer/Terrain" unique_id=1074657470]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("16_mumkj")
+
+[node name="Terrain_Close" type="Button" parent="CanvasLayer/Terrain" unique_id=1493069677]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "x"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Terrain" unique_id=252304706]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 25.0
+offset_right = 210.0
+offset_bottom = 35.0
+
+[node name="Search" type="Label" parent="CanvasLayer/Terrain" unique_id=980791599]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 8.0
+offset_right = 236.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 10
+text = "Search:"
+
+[node name="Data" type="Node" parent="." unique_id=1960506115]
+script = ExtResource("18_0gkf7")
+
+[node name="Network" type="Node" parent="." unique_id=39634114]
+script = ExtResource("19_6ehwc")
+
+[node name="Price" type="Node" parent="." unique_id=48474583]
+script = ExtResource("22_3jaai")
+
+[connection signal="button_down" from="CanvasLayer/Next_Turn/Next_Turn_Button" to="CanvasLayer/Next_Turn/Next_Turn_Label" method="_on_next_turn_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Economy" to="CanvasLayer/ButtonMenu" method="_on_economy_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Army" to="CanvasLayer/ButtonMenu" method="_on_army_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Infrastructure" to="CanvasLayer/ButtonMenu" method="_on_infrastructure_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Ressources" to="CanvasLayer/ButtonMenu" method="_on_ressources_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Country" to="CanvasLayer/ButtonMenu" method="_on_country_button_down"]
+[connection signal="button_down" from="CanvasLayer/ButtonMenu/Terrain" to="CanvasLayer/ButtonMenu" method="_on_terrain_button_down"]
+[connection signal="button_down" from="CanvasLayer/Other_Country/Other_Country_Close" to="CanvasLayer/Other_Country/Ohter_Country_Label" method="_on_other_country_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Other_Country/Other_Country_Info_Button" to="CanvasLayer/Other_Country/Ohter_Country_Label" method="_on_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Other_Country/Other_Country_Info/Other_Country_Info_Close" to="CanvasLayer/Other_Country/Other_Country_Info/Other_Country_Info_Label" method="_on_other_country_info_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Economy/Economy_Close" to="CanvasLayer/Economy/Economy_Label" method="_on_economy_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Army/Army_Close" to="CanvasLayer/Army/Army_Label" method="_on_army_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Infrastructure/Infrastructure_Close" to="CanvasLayer/Infrastructure/Infrastructure_Label" method="_on_infrastructure_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Resources/Resources_Close" to="CanvasLayer/Resources/Resources_Label" method="_on_resources_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Country/Country_Close" to="CanvasLayer/Country/Country_Label" method="_on_country_close_button_down"]
+[connection signal="button_down" from="CanvasLayer/Terrain/Terrain_Close" to="CanvasLayer/Terrain/Terrain_Label" method="_on_country_close_button_down"]
