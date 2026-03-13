@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://djhu4ck2vyxu" path="res://scenes/game/infrastructure_label.gd" id="13_8krtj"]
 [ext_resource type="Script" uid="uid://buotqsfp34mqf" path="res://scenes/game/ressource_label.gd" id="14_fydea"]
 [ext_resource type="Script" uid="uid://83gmrpe13arb" path="res://scenes/game/country_label.gd" id="15_af6p5"]
-[ext_resource type="Script" uid="uid://bxeyuac7j6dlb" path="res://scenes/game/terrain_label.gd" id="16_mumkj"]
 [ext_resource type="Script" uid="uid://c07cfqv0mo3ve" path="res://scenes/game/my_info.gd" id="17_2vph8"]
 [ext_resource type="Script" uid="uid://dtlng6cs37h5b" path="res://scenes/game/data.gd" id="18_0gkf7"]
 [ext_resource type="Script" uid="uid://dnk050i6vwhpo" path="res://scenes/game/next_turn_label.gd" id="18_pg2xm"]
@@ -71,6 +70,148 @@ bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d21ai"]
 bg_color = Color(0.13636076, 0.0036181496, 0.029277999, 0.8509804)
+
+[sub_resource type="GDScript" id="GDScript_wdnak"]
+script/source = "extends Label
+@onready var map_node : Node2D = $\"../../..\"
+@onready var terrain_panel : Panel = $\"../\"
+@onready var vbox = $\"../VBoxContainer\"
+var last_displayed_country = \"\"
+var searching = {}
+
+func _process(_delta):
+	if Data.player_country == null: return
+	for country in Data.country_list.values():
+		if country.name == map_node.last_country_clicked:
+			if country.name == Data.player_country.name:
+				if country.name != last_displayed_country:
+					last_displayed_country = country.name
+					display_terrain(country)
+
+func display_terrain(country):
+	text = \"\"
+	var ter = country.terrain
+	for child in vbox.get_children():
+		child.queue_free()
+
+	var resources = [
+		[\"🛢 Oil\",        \"oil\"],
+		[\"⚙ Metal\",      \"metal\"],
+		[\"🪨 Coal\",       \"coal\"],
+		[\"💨 Gas\",        \"gas\"],
+		[\"☢ Uranium\",    \"uranium\"],
+		[\"🌾 Food\",       \"food\"],
+		[\"⚡ Energy\",     \"energy\"],
+		[\"🪵 Wood\",       \"wood\"],
+		[\"🪙 Gold\",       \"gold\"],
+		[\"💎 Rare Earth\", \"rare_earth\"],
+	]
+
+	for entry in resources:
+		var label = entry[0]
+		var key = entry[1]
+		var view_val = ter.get(\"view_\" + key)
+		var max_val = ter.get(key)
+		if view_val == null: view_val = 0
+		if max_val == null: max_val = 0
+
+		var row = HBoxContainer.new()
+		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
+		var lbl = Label.new()
+
+		var status = \"???\"
+		if view_val == 0:
+			status = \"Unexplored\"
+		elif view_val >= max_val:
+			status = format_number(view_val) + \" (fully surveyed)\"
+		else:
+			status = format_number(view_val) + \" surveyed\"
+
+		lbl.text = label + \": \" + status
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		lbl.add_theme_font_size_override(\"font_size\", 13)
+
+		if view_val == 0:
+			lbl.modulate = Color(0.5, 0.5, 0.5)
+		elif view_val >= max_val:
+			lbl.modulate = Color.GREEN
+		else:
+			lbl.modulate = Color.YELLOW
+
+		row.add_child(lbl)
+
+		var btn = Button.new()
+		if view_val >= max_val:
+			btn.text = \"✓\"
+			btn.disabled = true
+		elif searching.get(key, false):
+			btn.text = \"...\"
+			btn.disabled = true
+		else:
+			btn.text = \"🔍\"
+		btn.custom_minimum_size = Vector2(35, 0)
+		btn.add_theme_font_size_override(\"font_size\", 12)
+		btn.pressed.connect(on_resource_pressed.bind(key))
+		row.add_child(btn)
+
+		vbox.add_child(row)
+
+	var legend = Label.new()
+	legend.text = \"\\n⚠ Surveyed amounts are estimates.\\nTrue reserves are unknown until fully explored.\"
+	legend.modulate = Color(0.6, 0.6, 0.6)
+	legend.add_theme_font_size_override(\"font_size\", 11)
+	legend.autowrap_mode = TextServer.AUTOWRAP_WORD
+	vbox.add_child(legend)
+
+func format_number(n) -> String:
+	if n == null: return \"0\"
+	n = float(n)
+	if n >= 1000000:
+		return str(snapped(n / 1000000.0, 0.1)).replace(\".0\", \"\") + \"M\"
+	elif n >= 1000:
+		return str(snapped(n / 1000.0, 0.1)).replace(\".0\", \"\") + \"k\"
+	return str(int(n))
+
+func on_resource_pressed(resource_key: String):
+	if searching.get(resource_key, false): return
+	searching[resource_key] = true
+	last_displayed_country = \"\"
+	search_resource(resource_key)
+
+func search_resource(resource_key: String):
+	var ter = Data.player_country.terrain
+	var view_key = \"view_\" + resource_key
+	var current_view = ter.get(view_key)
+	var max_val = ter.get(resource_key)
+	if current_view == null: 
+		current_view = 0
+	if max_val == null: 
+		max_val = 0
+
+	var remaining = max_val - current_view
+	if remaining <= 0:
+		searching[resource_key] = false
+		Data.show_popup(resource_key.capitalize() + \": fully surveyed!\")
+		return
+
+	var discovery = int(max_val * randf_range(0.10, 0.20))
+	discovery = max(1, discovery)
+	var new_value = min(current_view + discovery, max_val)
+
+	if multiplayer.is_server():
+		Data.apply_terrain_field.rpc(Data.player_country.name, view_key, new_value)
+	else:
+		Data.request_set_terrain_field.rpc_id(1, Data.player_country.name, view_key, new_value)
+
+	searching[resource_key] = false
+	Data.show_popup(\"🔍 \" + resource_key.replace(\"_\", \" \").capitalize() + \"\\n+\" + format_number(discovery) + \" surveyed\\nTotal known: \" + format_number(new_value) + \"\\n(true reserves unknown)\")
+	last_displayed_country = \"\"
+
+func _on_country_close_button_down() -> void:
+	terrain_panel.global_position = Vector2(0, 0)
+	terrain_panel.hide()
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iff4"]
 bg_color = Color(0.13725491, 0.003921569, 0.02745098, 0.8509804)
@@ -377,8 +518,8 @@ text = "x"
 
 [node name="Infrastructure" type="Panel" parent="CanvasLayer" unique_id=95475999]
 visible = false
-offset_right = 275.0
-offset_bottom = 315.0
+offset_right = 300.0
+offset_bottom = 470.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
 script = ExtResource("7_4vuph")
 
@@ -399,14 +540,13 @@ grow_horizontal = 0
 text = "x"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Infrastructure" unique_id=624023467]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 25.0
-offset_right = 210.0
-offset_bottom = 35.0
+layout_mode = 1
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 23.0
+offset_bottom = 17.0
 
 [node name="Resources" type="Panel" parent="CanvasLayer" unique_id=1950809736]
-visible = false
 offset_right = 275.0
 offset_bottom = 315.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
@@ -427,6 +567,11 @@ offset_left = -17.0
 offset_bottom = 31.0
 grow_horizontal = 0
 text = "x"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Resources" unique_id=238568982]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Country" type="Panel" parent="CanvasLayer" unique_id=241604420]
 visible = false
@@ -454,7 +599,7 @@ text = "x"
 [node name="Terrain" type="Panel" parent="CanvasLayer" unique_id=1545458330]
 visible = false
 offset_right = 275.0
-offset_bottom = 285.0
+offset_bottom = 345.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
 script = ExtResource("7_4vuph")
 
@@ -462,7 +607,7 @@ script = ExtResource("7_4vuph")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-script = ExtResource("16_mumkj")
+script = SubResource("GDScript_wdnak")
 
 [node name="Terrain_Close" type="Button" parent="CanvasLayer/Terrain" unique_id=1493069677]
 layout_mode = 1
@@ -475,19 +620,10 @@ grow_horizontal = 0
 text = "x"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Terrain" unique_id=252304706]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 25.0
-offset_right = 210.0
-offset_bottom = 35.0
-
-[node name="Search" type="Label" parent="CanvasLayer/Terrain" unique_id=980791599]
-layout_mode = 0
-offset_left = 180.0
-offset_right = 236.0
-offset_bottom = 14.0
-theme_override_font_sizes/font_size = 10
-text = "Search:"
+layout_mode = 1
+offset_left = 1.0
+offset_right = 11.0
+offset_bottom = 10.0
 
 [node name="Market" type="Panel" parent="CanvasLayer" unique_id=933512447]
 visible = false

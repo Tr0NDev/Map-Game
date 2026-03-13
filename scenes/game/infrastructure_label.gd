@@ -5,141 +5,161 @@ extends Label
 
 var last_displayed_country = ""
 
-var infra_to_terrain = {
-	"oil_refinery": "view_oil",
-	"metal_foundry": "view_metal",
-	"coal_mine": "view_coal",
-	"gas_pipeline": "view_gas",
-	"nuclear_plant": "view_uranium",
-	"farm": "view_food",
-	"power_plant": "view_energy",
-	"sawmill": "view_wood",
-	"gold_mine": "view_gold",
-	"rare_earth_mine": "view_rare_earth",
-}
-
-#ajuster pour meilleur equilibrage :) :) :) 
-var infra_prices = {
-	"farm": 10000000,
-	"sawmill": 25000000,
-	"coal_mine": 40000000,
-	"power_plant": 60000000,
-	"metal_foundry": 80000000,
-	"gas_pipeline": 120000000,
-	"oil_refinery": 200000000,
-	"data_center": 300000000,
-	"gold_mine": 400000000,
-	"rare_earth_mine": 600000000,
-	"nuclear_plant": 1000000000,
+var infra_data = {
+	"farm":           {"terrain": "view_food",      "icon": "🌾", "label": "Farm",            "resource": "food",      "price": 10000000},
+	"sawmill":        {"terrain": "view_wood",      "icon": "🪵", "label": "Sawmill",         "resource": "wood",      "price": 25000000},
+	"coal_mine":      {"terrain": "view_coal",      "icon": "🪨", "label": "Coal Mine",       "resource": "coal",      "price": 40000000},
+	"power_plant":    {"terrain": "view_energy",    "icon": "⚡", "label": "Power Plant",     "resource": "energy",    "price": 60000000},
+	"metal_foundry":  {"terrain": "view_metal",     "icon": "⚙",  "label": "Metal Foundry",   "resource": "metal",     "price": 80000000},
+	"gas_pipeline":   {"terrain": "view_gas",       "icon": "💨", "label": "Gas Pipeline",    "resource": "gas",       "price": 120000000},
+	"oil_refinery":   {"terrain": "view_oil",       "icon": "🛢",  "label": "Oil Refinery",    "resource": "oil",       "price": 200000000},
+	"data_center":    {"terrain": "",               "icon": "💻", "label": "Data Center",     "resource": "digital",   "price": 300000000},
+	"gold_mine":      {"terrain": "view_gold",      "icon": "🪙", "label": "Gold Mine",       "resource": "gold",      "price": 400000000},
+	"rare_earth_mine":{"terrain": "view_rare_earth","icon": "💎", "label": "Rare Earth Mine", "resource": "rare_earth","price": 600000000},
+	"nuclear_plant":  {"terrain": "view_uranium",   "icon": "☢",  "label": "Nuclear Plant",   "resource": "uranium",   "price": 1000000000},
 }
 
 func _process(_delta):
+	if Data.player_country == null: return
 	for country in Data.country_list.values():
 		if country.name == map_node.last_country_clicked:
 			if country.name == Data.player_country.name:
-				display_stats(country)
 				if country.name != last_displayed_country:
 					last_displayed_country = country.name
-					display_infra_buttons(country)
+					display(country)
 
 func format_number(n) -> String:
-	if n == null:
-		return "0"
+	if n == null: return "0"
 	n = float(n)
-	if n >= 1000000:
-		var val = n / 1000000.0
-		return str(snapped(val, 0.1)).replace(".0", "") + "M"
+	if n >= 1000000000:
+		return str(snapped(n / 1000000000.0, 0.1)).replace(".0", "") + "B"
+	elif n >= 1000000:
+		return str(snapped(n / 1000000.0, 0.1)).replace(".0", "") + "M"
 	elif n >= 1000:
-		var val = n / 1000.0
-		return str(snapped(val, 0.1)).replace(".0", "") + "k"
+		return str(snapped(n / 1000.0, 0.1)).replace(".0", "") + "k"
 	return str(int(n))
 
-func display_stats(country):
-	var infra = country.infrastructure
-	var ter = country.terrain
-	
-	var stats_text = "Infrastructure (max):               Create()\n"
-	stats_text += "  Oil Refineries: {oil_refinery} ({oil_max})\n"
-	stats_text += "  Metal Foundries: {metal_foundry} ({metal_max})\n"
-	stats_text += "  Coal Mines: {coal_mine} ({coal_max})\n"
-	stats_text += "  Gas Pipelines: {gas_pipeline} ({gas_max})\n"
-	stats_text += "  Nuclear Plants: {nuclear_plant} ({uranium_max})\n"
-	stats_text += "  Farms: {farm} ({food_max})\n"
-	stats_text += "  Power Plants: {power_plant} ({energy_max})\n"
-	stats_text += "  Sawmills: {sawmill} ({wood_max})\n"
-	stats_text += "  Gold Mines: {gold_mine} ({gold_max})\n"
-	stats_text += "  Rare Earth Mines: {rare_earth_mine} ({rare_earth_max})\n"
-	stats_text += "  Data Centers: {data_center} ({digital_max})"
-	text = stats_text.format({
-		"oil_refinery": format_number(infra.oil_refinery),
-		"oil_max": format_number(ter.view_oil / 100.0),
-		"metal_foundry": format_number(infra.metal_foundry),
-		"metal_max": format_number(ter.view_metal / 100.0),
-		"coal_mine": format_number(infra.coal_mine),
-		"coal_max": format_number(ter.view_coal / 100.0),
-		"gas_pipeline": format_number(infra.gas_pipeline),
-		"gas_max": format_number(ter.view_gas / 100.0),
-		"nuclear_plant": format_number(infra.nuclear_plant),
-		"uranium_max": format_number(ter.view_uranium / 100.0),
-		"farm": format_number(infra.farm),
-		"food_max": format_number(ter.view_food / 100.0),
-		"power_plant": format_number(infra.power_plant),
-		"energy_max": format_number(ter.view_energy / 100.0),
-		"sawmill": format_number(infra.sawmill),
-		"wood_max": format_number(ter.view_wood / 100.0),
-		"gold_mine": format_number(infra.gold_mine),
-		"gold_max": format_number(ter.view_gold / 100.0),
-		"rare_earth_mine": format_number(infra.rare_earth_mine),
-		"rare_earth_max": format_number(ter.view_rare_earth / 100.0),
-		"data_center": format_number(infra.data_center),
-		"digital_max": format_number(0),
-	})
-
-func display_infra_buttons(country):
+func display(country):
+	text = ""
 	for child in vbox.get_children():
 		child.queue_free()
 
-	for infra_name in infra_to_terrain:
+	var title = Label.new()
+	title.text = "🏭 Infrastructure"
+	title.add_theme_font_size_override("font_size", 16)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	vbox.add_child(title)
+	vbox.add_child(HSeparator.new())
+
+	var money = float(country.economy.money)
+	var money_lbl = Label.new()
+	money_lbl.text = "💰 " + format_number(money) + "$"
+	money_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	money_lbl.modulate = Color.GREEN
+	money_lbl.add_theme_font_size_override("font_size", 13)
+	vbox.add_child(money_lbl)
+	vbox.add_child(HSeparator.new())
+
+	for infra_name in infra_data:
+		var d = infra_data[infra_name]
+		var infra = country.infrastructure
+		var current = infra.get(infra_name)
+		if current == null: current = 0
+
+		var max_infra = 999
+		if d["terrain"] != "":
+			var view_val = country.terrain.get(d["terrain"])
+			if view_val == null: view_val = 0
+			max_infra = int(view_val / 100.0)
+
+		var price = d["price"]
+		var can_afford = money >= price
+		var at_max = current >= max_infra
+
+		var row = HBoxContainer.new()
+		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.custom_minimum_size = Vector2(0, 32)
+
+		# icône + nom
+		var name_lbl = Label.new()
+		name_lbl.text = d["icon"] + " " + d["label"]
+		name_lbl.custom_minimum_size = Vector2(140, 0)
+		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		if at_max:
+			name_lbl.modulate = Color(0.5, 0.5, 0.5)
+		row.add_child(name_lbl)
+
+		# compteur current/max
+		var count_lbl = Label.new()
+		if d["terrain"] == "":
+			count_lbl.text = str(current)
+		else:
+			count_lbl.text = str(current) + "/" + str(max_infra)
+		count_lbl.custom_minimum_size = Vector2(50, 0)
+		count_lbl.add_theme_font_size_override("font_size", 12)
+		count_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		count_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		if at_max:
+			count_lbl.modulate = Color.GREEN
+		elif current > 0:
+			count_lbl.modulate = Color.YELLOW
+		else:
+			count_lbl.modulate = Color.GRAY
+		row.add_child(count_lbl)
+
+		# bouton build
 		var btn = Button.new()
-		var price = infra_prices.get(infra_name, 0)
-		btn.text = format_number(price) + "$"
-		btn.custom_minimum_size = Vector2(15, 15)
-		btn.add_theme_font_size_override("font_size", 10)
+		if at_max:
+			btn.text = "✓ MAX"
+			btn.disabled = true
+		elif not can_afford:
+			btn.text = format_number(price) + "$"
+			btn.disabled = true
+			btn.modulate = Color(0.6, 0.4, 0.4)
+		else:
+			btn.text = "+" + format_number(price) + "$"
+			btn.modulate = Color.YELLOW
+		btn.custom_minimum_size = Vector2(90, 28)
+		btn.add_theme_font_size_override("font_size", 11)
 		btn.pressed.connect(_on_infra_pressed.bind(infra_name))
-		vbox.add_child(btn)
+		row.add_child(btn)
+
+		vbox.add_child(row)
 
 func _on_infra_pressed(infra_name: String):
 	var country = Data.player_country
+	var d = infra_data[infra_name]
 	var infra = country.infrastructure
-	var terrain_key = infra_to_terrain[infra_name]
-	var view_val = country.terrain.get(terrain_key)
-	var max_infra = int(view_val / 100.0)
 	var current = infra.get(infra_name)
-	if current == null:
-		current = 0
+	if current == null: current = 0
+
+	var max_infra = 999
+	if d["terrain"] != "":
+		var view_val = country.terrain.get(d["terrain"])
+		if view_val == null: view_val = 0
+		max_infra = int(view_val / 100.0)
 
 	if current >= max_infra:
-		Data.show_popup("Max reached for " + infra_name + "\n(" + str(current) + "/" + str(max_infra) + ")")
+		Data.show_popup("Max reached!\n" + str(current) + "/" + str(max_infra))
 		return
 
-	var price = infra_prices.get(infra_name, 0)
+	var price = d["price"]
 	var money = float(country.economy.money)
 	if money < price:
 		Data.show_popup("Not enough money!\nNeed " + format_number(price) + "$\nYou have " + format_number(money) + "$")
 		return
 
-	var new_value = current + 1
-	var new_money = money - price
-
 	if multiplayer.is_server():
-		Data.apply_infra_field.rpc(country.name, infra_name, new_value)
-		Data.apply_economy_field.rpc(country.name, "money", new_money)
+		Data.apply_infra_field.rpc(country.name, infra_name, current + 1)
+		Data.apply_economy_field.rpc(country.name, "money", money - price)
 	else:
-		Data.request_set_infra_field.rpc_id(1, country.name, infra_name, new_value)
-		Data.request_set_economy_field.rpc_id(1, country.name, "money", new_money)
+		Data.request_set_infra_field.rpc_id(1, country.name, infra_name, current + 1)
+		Data.request_set_economy_field.rpc_id(1, country.name, "money", money - price)
 
 	last_displayed_country = ""
-	Data.show_popup("New " + infra_name + " built!\n-" + format_number(price) + "$\nNow " + str(new_value) + "/" + str(max_infra))
+	Data.show_popup(d["icon"] + " " + d["label"] + " built!\n-" + format_number(price) + "$")
 
 func _on_infrastructure_close_button_down() -> void:
 	infra_panel.global_position = Vector2(0, 0)

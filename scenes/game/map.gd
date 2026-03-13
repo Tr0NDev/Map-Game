@@ -29,30 +29,40 @@ func _ready():
 	map_sprite.material = shader_material
 
 	Data.country_surrendered.connect(func(_loser, _winner):
-		_update_annexed_colors()
+		update_annexed_colors()
 	)
-	
 
-func _highlight_country(country_name: String):
+
+var _initialized = false
+
+func _process(_delta):
+	if not _initialized and Data.player_country != null:
+		_initialized = true
+		last_country_clicked = Data.player_country.name
+		set_player_color()
+		highlight_country_with_annexed(Data.player_country.name)
+
+
+func highlight_country(country_name: String):
 	var country_color : Color = Color.TRANSPARENT
 	for color in color_to_country:
 		if color_to_country[color] == country_name:
 			country_color = color
 			break
 	if country_color == Color.TRANSPARENT:
-		_clear_highlight()
+		clear_highlight()
 		return
 	shader_material.set_shader_parameter("target_color", Vector3(country_color.r, country_color.g, country_color.b))
 	shader_material.set_shader_parameter("active", true)
-	_update_annexed_colors()
+	update_annexed_colors()
 
-func _clear_highlight():
+func clear_highlight():
 	if shader_material:
 		shader_material.set_shader_parameter("active", true)
 		shader_material.set_shader_parameter("target_color", Vector3(0.0, 0.0, 0.0))
-		_update_annexed_colors()
+		update_annexed_colors()
 
-func _update_annexed_colors():
+func update_annexed_colors():
 	if Data.player_country == null:
 		shader_material.set_shader_parameter("extra_count", 0)
 		return
@@ -130,53 +140,53 @@ func detect_country():
 
 	if country != "":
 		if Data.annexed_countries.has(country):
-			var owner = Data.annexed_countries[country]
-			if Data.player_country != null and Data.player_country.name == owner:
-				last_country_clicked = owner
-				_highlight_country_with_annexed(owner)
+			var var_owner = Data.annexed_countries[country]
+			if Data.player_country != null and Data.player_country.name == var_owner:
+				last_country_clicked = var_owner
+				highlight_country_with_annexed(var_owner)
 				return
 			else:
 				last_country_clicked = country
-				_highlight_single(country)
+				highlight_single(country)
 				return
 
 		last_country_clicked = country
 
 		if Data.player_country != null and Data.player_country.name == country:
-			_highlight_country_with_annexed(country)
+			highlight_country_with_annexed(country)
 		else:
-			_highlight_single(country)
+			highlight_single(country)
 	else:
 		last_country_clicked = ""
-		_clear_highlight()
+		clear_highlight()
 
-func _highlight_single(country_name: String):
+func highlight_single(country_name: String):
 	var country_color : Color = Color.TRANSPARENT
 	for color in color_to_country:
 		if color_to_country[color] == country_name:
 			country_color = color
 			break
 	if country_color == Color.TRANSPARENT:
-		_clear_highlight()
+		clear_highlight()
 		return
 	shader_material.set_shader_parameter("target_color", Vector3(country_color.r, country_color.g, country_color.b))
-	shader_material.set_shader_parameter("extra_count", 0)
 	shader_material.set_shader_parameter("active", true)
+	update_annexed_colors()
 
-func _highlight_country_with_annexed(country_name: String):
+func highlight_country_with_annexed(country_name: String):
 	var country_color : Color = Color.TRANSPARENT
 	for color in color_to_country:
 		if color_to_country[color] == country_name:
 			country_color = color
 			break
 	if country_color == Color.TRANSPARENT:
-		_clear_highlight()
+		clear_highlight()
 		return
 	shader_material.set_shader_parameter("target_color", Vector3(country_color.r, country_color.g, country_color.b))
 	shader_material.set_shader_parameter("active", true)
-	_update_annexed_colors()
+	update_annexed_colors()
 
-func _show_annexed_country_info(annexed: String, owner: String):
+func show_annexed_country_info(annexed: String, owner: String):
 	if not Data.country_list.has(annexed):
 		return
 	Data.show_popup("🏴 " + annexed + "\nAnnexed territory of " + owner + "\n(All resources transferred)")
@@ -247,4 +257,12 @@ func make_white_transparent():
 	var new_texture = ImageTexture.create_from_image(image)
 	map_sprite.texture = new_texture
 	
-	
+
+func set_player_color():
+	if Data.player_country == null:
+		return
+	var country_name = Data.player_country.name
+	for color in color_to_country:
+		if color_to_country[color] == country_name:
+			shader_material.set_shader_parameter("player_color", Vector3(color.r, color.g, color.b))
+			return

@@ -868,6 +868,7 @@ func end_war(country_a: String, country_b: String):
 		   (wars[i]["attacker"] == country_b and wars[i]["defender"] == country_a):
 			wars.remove_at(i)
 	sync_wars.rpc(wars)
+	sync_wars(wars)
 	wars_updated.emit()
 
 @rpc("any_peer", "reliable")
@@ -906,6 +907,7 @@ func add_war_troops(country_name: String, attacker: String, defender: String, tr
 				wars[i][key][unit] = troops[unit]
 		break
 	sync_wars.rpc(wars)
+	sync_wars(wars)
 
 @rpc("any_peer", "reliable")
 func request_strike(attacker: String, defender: String, missile_type: String, qty: int, target_type: String):

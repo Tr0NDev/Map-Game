@@ -448,14 +448,17 @@ func bot_market_buy(country):
 		var best_index = -1
 		var best_price = INF
 		for i in range(Data.market_offers.size()):
-			var offer = Data.market_offers[i]
-			if offer["resource"] != res: continue
-			if offer["country"] == country.name: continue
-			if offer["quantity"] <= 0: continue
-			var tariff = Data.get_tariff(offer["country"], country.name)
-			var final_price = offer["price_per_unit"] * (1.0 + tariff / 100.0)
-			if final_price < best_price:
-				best_price = final_price
+			var offer_mak = Data.market_offers[i]
+			var tariff_mak = Data.get_tariff(offer_mak["country"], country.name)
+			var final_price_mak = offer_mak["price_per_unit"] * (1.0 + tariff_mak / 100.0)
+			if offer_mak["resource"] != res:
+				continue
+			if offer_mak["country"] == country.name:
+				continue
+			if offer_mak["quantity"] <= 0: 
+				continue
+			if final_price_mak < best_price:
+				best_price = final_price_mak
 				best_index = i
 		if best_index == -1:
 			continue
@@ -627,7 +630,6 @@ func bot_build(country):
 
 	var build_priorities = []
 	var res = country.resources
-	var strength = bot_military_strength(country)
 
 	var food = res.get("food"); if food == null: food = 0
 	var energy = res.get("energy"); if energy == null: energy = 0
@@ -816,8 +818,8 @@ func simulate_battle(war_index: int):
 		Data.wars[war_index]["defender_losses"][unit] += losses
 		def_loss_report += "  -" + str(losses) + " " + unit + "\n"
 
-	var att_pid = Data._get_pid(att_name)
-	var def_pid = Data._get_pid(def_name)
+	var att_pid = Data.get_pid(att_name)
+	var def_pid = Data.get_pid(def_name)
 
 	var att_msg = "⚔ Battle vs " + def_name + "\nYour losses:\n" + (att_loss_report if att_loss_report != "" else "  None")
 	var def_msg = "⚔ Battle vs " + att_name + "\nYour losses:\n" + (def_loss_report if def_loss_report != "" else "  None")
@@ -850,7 +852,6 @@ func bot_strike(country):
 
 		var qty = min(missiles, randi_range(1, 3))
 
-		var enemy = Data.country_list[enemy_name]
 		var target_type = "soldier"
 
 		var enemy_troops_key = "defender_troops" if w["attacker"] == country.name else "attacker_troops"
@@ -1032,7 +1033,7 @@ func bot_propose_peace(country):
 			})
 			Data.sync_peace.rpc(Data.peace_proposals)
 			Data.peace_updated.emit()
-			var pid = Data._get_pid(enemy_name)
+			var pid = Data.get_pid(enemy_name)
 			var type_labels = {"classic": "🕊 Classic Peace", "invasion": "⚔ Annexation terms", "surrender": "🏳 Surrender"}
 			var msg = country.name + " proposes: " + type_labels.get(peace_type, "Peace") + "\nCheck your war panel!"
 			if pid == 1: Data.show_popup(msg)

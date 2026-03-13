@@ -603,7 +603,7 @@ func propose_peace(war: Dictionary, canvas: CanvasLayer):
 	panel.custom_minimum_size = Vector2(400, 300)
 	c2.add_child(panel)
 
-	var vbox = VBoxContainer.new()
+	vbox = VBoxContainer.new()
 	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT, Control.PRESET_MODE_MINSIZE, 16)
 	panel.add_child(vbox)
 
@@ -865,12 +865,10 @@ func open_peace_menu(war: Dictionary, parent_canvas: CanvasLayer):
 
 func send_peace_proposal(from: String, to: String, peace_type: String, terms: Dictionary):
 	if multiplayer.is_server():
-		Data.requestpropose_peace_terms(from, to, peace_type, terms)
+		Data.request_propose_peace_terms(from, to, peace_type, terms)
 	else:
-		Data.requestpropose_peace_terms.rpc_id(1, from, to, peace_type, terms)
+		Data.request_propose_peace_terms.rpc_id(1, from, to, peace_type, terms)
 	Data.show_popup("Peace proposal sent to " + to + "!")
-
-
 
 
 func _on_war_close_button_down() -> void:

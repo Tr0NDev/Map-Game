@@ -21,9 +21,9 @@ func display():
 	add_separator()
 	add_label("Population: " + fmt(pop.pop_number), 14, Color.WHITE)
 
-	var approval_color = approval_color(pop.approval)
+	var approval_color_var = approval_color(pop.approval)
 	var approval_trend = get_approval_trend()
-	add_label("Approval: " + str(pop.approval) + "% " + approval_trend, 14, approval_color)
+	add_label("Approval: " + str(pop.approval) + "% " + approval_trend, 14, approval_color_var)
 	add_separator()
 
 	add_label("Improve Approval:", 13, Color.GRAY)

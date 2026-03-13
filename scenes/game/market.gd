@@ -208,7 +208,7 @@ func on_buy_offer(offer_index: int, buy_spinbox: SpinBox, final_price: float):
 	apply_resources(Data.player_country.name, key, buyer_stock + amount)
 	apply_money(Data.player_country.name, buyer_money - cost)
 
-	var base_cost = amount * offer["price_per_unit"]
+
 	var seller_name = offer["country"]
 	if Data.country_list.has(seller_name):
 		var seller_money = float(Data.country_list[seller_name].economy.money)
