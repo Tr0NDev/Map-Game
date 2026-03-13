@@ -4,6 +4,7 @@ extends Label
 @onready var vbox = $"../VBoxContainer"
 
 var last_displayed_country = ""
+var last_refresh_data = {}
 
 var infra_data = {
 	"farm":           {"terrain": "view_food",      "icon": "🌾", "label": "Farm",            "resource": "food",      "price": 10000000},
@@ -21,12 +22,28 @@ var infra_data = {
 
 func _process(_delta):
 	if Data.player_country == null: return
+	if vbox == null: return
 	for country in Data.country_list.values():
 		if country.name == map_node.last_country_clicked:
 			if country.name == Data.player_country.name:
-				if country.name != last_displayed_country:
-					last_displayed_country = country.name
+				if _needs_refresh(country):
 					display(country)
+
+func _needs_refresh(country) -> bool:
+	var infra = country.infrastructure
+	var eco = country.economy
+	var ter = country.terrain
+	var snapshot = {}
+	snapshot["money"] = float(eco.money)
+	for infra_name in infra_data:
+		snapshot[infra_name] = infra.get(infra_name)
+		var terrain_key = infra_data[infra_name]["terrain"]
+		if terrain_key != "":
+			snapshot[terrain_key] = ter.get(terrain_key)
+	if snapshot != last_refresh_data:
+		last_refresh_data = snapshot
+		return true
+	return false
 
 func format_number(n) -> String:
 	if n == null: return "0"
@@ -71,7 +88,7 @@ func display(country):
 		if d["terrain"] != "":
 			var view_val = country.terrain.get(d["terrain"])
 			if view_val == null: view_val = 0
-			max_infra = int(view_val / 100.0)
+			max_infra = int(view_val / 10.0)
 
 		var price = d["price"]
 		var can_afford = money >= price
@@ -81,17 +98,15 @@ func display(country):
 		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.custom_minimum_size = Vector2(0, 32)
 
-		# icône + nom
 		var name_lbl = Label.new()
 		name_lbl.text = d["icon"] + " " + d["label"]
 		name_lbl.custom_minimum_size = Vector2(140, 0)
 		name_lbl.add_theme_font_size_override("font_size", 12)
 		name_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		if at_max:
+		if at_max and max_infra > 0:
 			name_lbl.modulate = Color(0.5, 0.5, 0.5)
 		row.add_child(name_lbl)
 
-		# compteur current/max
 		var count_lbl = Label.new()
 		if d["terrain"] == "":
 			count_lbl.text = str(current)
@@ -101,17 +116,22 @@ func display(country):
 		count_lbl.add_theme_font_size_override("font_size", 12)
 		count_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		count_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		if at_max:
+		if at_max and max_infra > 0:
 			count_lbl.modulate = Color.GREEN
 		elif current > 0:
 			count_lbl.modulate = Color.YELLOW
+		elif max_infra == 0:
+			count_lbl.modulate = Color.GRAY
 		else:
 			count_lbl.modulate = Color.GRAY
 		row.add_child(count_lbl)
 
-		# bouton build
 		var btn = Button.new()
-		if at_max:
+		if max_infra == 0:
+			btn.text = "🔍 Survey first"
+			btn.disabled = true
+			btn.modulate = Color(0.5, 0.5, 0.5)
+		elif at_max:
 			btn.text = "✓ MAX"
 			btn.disabled = true
 		elif not can_afford:
@@ -121,7 +141,7 @@ func display(country):
 		else:
 			btn.text = "+" + format_number(price) + "$"
 			btn.modulate = Color.YELLOW
-		btn.custom_minimum_size = Vector2(90, 28)
+		btn.custom_minimum_size = Vector2(110, 28)
 		btn.add_theme_font_size_override("font_size", 11)
 		btn.pressed.connect(_on_infra_pressed.bind(infra_name))
 		row.add_child(btn)
@@ -139,10 +159,14 @@ func _on_infra_pressed(infra_name: String):
 	if d["terrain"] != "":
 		var view_val = country.terrain.get(d["terrain"])
 		if view_val == null: view_val = 0
-		max_infra = int(view_val / 100.0)
+		max_infra = int(view_val / 10.0)
+
+	if max_infra == 0:
+		Data.show_popup("Survey terrain first to unlock " + d["label"] + "!")
+		return
 
 	if current >= max_infra:
-		Data.show_popup("Max reached!\n" + str(current) + "/" + str(max_infra))
+		Data.show_popup("Max reached!\n" + str(current) + "/" + str(max_infra) + "\nSurvey more terrain to unlock slots.")
 		return
 
 	var price = d["price"]
@@ -158,8 +182,7 @@ func _on_infra_pressed(infra_name: String):
 		Data.request_set_infra_field.rpc_id(1, country.name, infra_name, current + 1)
 		Data.request_set_economy_field.rpc_id(1, country.name, "money", money - price)
 
-	last_displayed_country = ""
-	Data.show_popup(d["icon"] + " " + d["label"] + " built!\n-" + format_number(price) + "$")
+	Data.show_popup(d["icon"] + " " + d["label"] + " built!\n-" + format_number(price) + "$\n" + str(current + 1) + "/" + str(max_infra))
 
 func _on_infrastructure_close_button_down() -> void:
 	infra_panel.global_position = Vector2(0, 0)

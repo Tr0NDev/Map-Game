@@ -94,6 +94,14 @@ func display_terrain(country):
 	for child in vbox.get_children():
 		child.queue_free()
 
+	var title = Label.new()
+	title.text = \"🗺 Terrain Survey\"
+	title.add_theme_font_size_override(\"font_size\", 16)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	vbox.add_child(title)
+	vbox.add_child(HSeparator.new())
+
 	var resources = [
 		[\"🛢 Oil\",        \"oil\"],
 		[\"⚙ Metal\",      \"metal\"],
@@ -518,7 +526,7 @@ text = "x"
 
 [node name="Infrastructure" type="Panel" parent="CanvasLayer" unique_id=95475999]
 visible = false
-offset_right = 300.0
+offset_right = 330.0
 offset_bottom = 470.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
 script = ExtResource("7_4vuph")
@@ -547,8 +555,9 @@ offset_right = 23.0
 offset_bottom = 17.0
 
 [node name="Resources" type="Panel" parent="CanvasLayer" unique_id=1950809736]
+visible = false
 offset_right = 275.0
-offset_bottom = 315.0
+offset_bottom = 320.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
 script = ExtResource("7_4vuph")
 
@@ -570,8 +579,10 @@ text = "x"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Resources" unique_id=238568982]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 25.0
+offset_top = 3.0
+offset_right = 65.0
+offset_bottom = 43.0
 
 [node name="Country" type="Panel" parent="CanvasLayer" unique_id=241604420]
 visible = false
@@ -599,7 +610,7 @@ text = "x"
 [node name="Terrain" type="Panel" parent="CanvasLayer" unique_id=1545458330]
 visible = false
 offset_right = 275.0
-offset_bottom = 345.0
+offset_bottom = 400.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_d21ai")
 script = ExtResource("7_4vuph")
 
